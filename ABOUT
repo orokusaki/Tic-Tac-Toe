@@ -1,0 +1,11 @@
+This is a Django application. Run using any trunk version of Django
+(circa October, 2010).
+
+The DB and template settings are self-set (using `os.getcwd()`), and an
+sqllit3 database file will be created right inside the /tictactoe/
+directory (for ease of installation).
+
+To install, simply CD into the /tictactoe/ directory and run
+`python manage.py syncdb`, then `python manage.py runserver 8080`.
+
+You can now play at http://127.0.0.1:8080/

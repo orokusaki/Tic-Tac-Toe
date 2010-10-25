@@ -1,0 +1,25 @@
+		<div class="top_bar">
+			<ul>
+{% if request.player %}
+				<li>
+					<strong>{{ request.player.name }} - </strong>
+					<em>(wins: {{ request.player.number_of_wins }}, losses: {{ request.player.number_of_losses }}, cat's games: {{ request.player.number_of_cats_games }})</em>
+				</li>
+{% endif %}
+				<li>
+					<a href="{% url new_game %}">New Game</a>
+				</li>
+				<li>
+					<a href="{% url new_player %}">New Player</a>
+				</li>
+			</ul>
+		</div><!--/.top_bar-->
+{% if messages %}
+	{% for message in messages %}
+		<div class="message {% if message.tags %}{{ message.tags }}{% endif %} kill">
+			<p>
+				<strong>{{ message }}</strong>
+			</p>
+		</div><!--/.message-->
+	{% endfor %}
+{% endif %}

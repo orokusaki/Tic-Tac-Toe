@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8" />
+		<title>Tic Tac You Lose&trade; by Michael Angeletti</title>
+{% include "head_extras.html" %}
+	</head>
+	
+	<body>
+{% include "top_bar.html" %}
+		<div class="wrapper">
+			<div class="container">
+				<div class="game">
+					<div class="row">
+{% for position in all_positions %}
+						<div class="square">
+	{% if position in com_positions %}
+							<strong class="computer">O</strong>
+	{% endif %}
+	{% if position in plr_positions %}
+							<strong>X</strong>
+	{% endif %}
+	{% if position in avl_positions %}
+							<a href="{% url make_move position %}">X</a>
+	{% endif %}
+						</div><!--/.square-->
+{% endfor %}
+					</div><!--/.row-->
+				</div><!--/.game-->
+			</div><!--/.container-->
+		</div><!--/.wrapper-->
+	</body>
+</html>

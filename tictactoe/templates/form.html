@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8" />
+		<title>Tic Tac You Lose&trade; by Michael Angeletti</title>
+{% include "head_extras.html" %}
+	</head>
+	
+	<body>
+{% include "top_bar.html" %}
+		<div class="wrapper">
+			<div class="container">
+				<div class="shell">
+{% if form.non_field_errors %}
+					<ol class="non_field_errors">
+	{% for non_field_error in form.non_field_errors %}
+						<li>{{ non_field_error }}</li>
+	{% endfor %}
+					</ol>
+{% else %}
+	{% if form.errors %}
+					<ol class="non_field_errors">
+						<li>Please check each field for errors.</li>
+					</ol>
+	{% endif %}
+{% endif %}
+					<form action="" method="post" enctype="application/x-www-form-urlencoded">{% csrf_token %}
+{% for field in form.visible_fields %}
+						<dl>
+							<dt>
+								<label for="{{ field.auto_id }}">
+									<strong>{{ field.label }}</strong>
+								</label>
+							</dt>
+							<dd>
+								{{ field }}
+	{% if field.errors %}
+								<ol class="field_errors">
+		{% for error in field.errors %}
+									<li>{{ error }}</li>
+		{% endfor %}
+								</ol>
+	{% endif %}
+							</dd>
+						</dl>
+{% endfor %}
+						<p>
+							<button type="submit">Submit</button>
+						</p>
+					</form>
+				</div><!--/.shell-->
+			</div><!--/.container-->
+		</div><!--/.wrapper-->
+	</body>
+</html>
